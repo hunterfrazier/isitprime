@@ -28,13 +28,18 @@ var LikeButton = function (_React$Component) {
       var _this2 = this;
 
       if (this.state.liked) {
-        return 'works';
+        return e('button', {
+          onClick: function onClick() {
+            _this2.setState({ liked: false }), console.log('click me');
+          }
+        }, 'liked');
+      } else {
+        return e('button', {
+          onClick: function onClick() {
+            _this2.setState({ liked: true }), console.log('jsx works');
+          }
+        }, 'click me');
       }
-      return e('button', {
-        onClick: function onClick() {
-          _this2.setState({ liked: true }), console.log('jsx compiled');
-        }
-      }, 'click me');
     }
   }]);
 
