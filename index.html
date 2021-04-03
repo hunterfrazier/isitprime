@@ -1,13 +1,32 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Hello React</title>
-  <meta name="description" content="React boilerplate playground">
-  <meta name="author" content="hunterfrazier">
-  <!--<link rel="stylesheet" href="css/styles.css?v=1.0">-->
+    <meta charset="utf-8">
+    <title>Hello React</title>
+    <meta name="description" content="React boilerplate playground">
+    <meta name="author" content="hunterfrazier">
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </head>
-<body>
-  <script src="js/scripts.js"></script>
+<body id="super">
+    <div style="width:90%; max-width:960px; margin:0 auto">
+        <h1>React Dev</h2>
+        <div style="padding:1em; background: white">
+            <div id="like_button_container">like</div>
+        </div>
+    </div>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
