@@ -10,44 +10,103 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var e = React.createElement;
 
-var LikeButton = function (_React$Component) {
-  _inherits(LikeButton, _React$Component);
+// ES6 isprime function
+// https://stackoverflow.com/questions/40200089/number-prime-test-in-javascript
 
-  function LikeButton(props) {
-    _classCallCheck(this, LikeButton);
+var isPrime = function isPrime(num) {
+  for (var i = 2; i < num; i++) {
+    if (num % i === 0) return false;
+  }return num > 1;
+};
 
-    var _this = _possibleConstructorReturn(this, (LikeButton.__proto__ || Object.getPrototypeOf(LikeButton)).call(this, props));
+// calculate prime function exercise - W3 Resource
+// https://www.w3resource.com/javascript-exercises/javascript-math-exercise-43.php
 
-    _this.state = { liked: false };
+function primeFactorsTo(max) {
+  var store = [],
+      i,
+      j,
+      primes = [];
+  for (i = 2; i <= max; ++i) {
+    if (!store[i]) {
+      primes.push(i);
+      for (j = i << 1; j <= max; j += i) {
+        store[j] = true;
+      }
+    }
+  }
+  store = [];
+  return primes;
+}
+
+function GetPrimes() {
+  return primeFactorsTo(100).join(', ');
+}
+
+function GetPrimes1000() {
+  return primeFactorsTo(1000).join(', ');
+}
+
+function GetPrimes10000() {
+  return primeFactorsTo(10000).join(', ');
+}
+
+function GetPrimes100000() {
+  return primeFactorsTo(100000).join(', ');
+}
+
+var primeContainer1 = document.getElementById('getPrimes100');
+ReactDOM.render(e(GetPrimes), primeContainer1);
+
+var primeContainer2 = document.getElementById('getPrimes1000');
+ReactDOM.render(e(GetPrimes1000), primeContainer2);
+
+var primeContainer3 = document.getElementById('getPrimes10000');
+ReactDOM.render(e(GetPrimes10000), primeContainer3);
+
+var primeContainer4 = document.getElementById('getPrimes100000');
+ReactDOM.render(e(GetPrimes100000), primeContainer4);
+
+var CheckPrimeApp = function (_React$Component) {
+  _inherits(CheckPrimeApp, _React$Component);
+
+  function CheckPrimeApp(props) {
+    _classCallCheck(this, CheckPrimeApp);
+
+    var _this = _possibleConstructorReturn(this, (CheckPrimeApp.__proto__ || Object.getPrototypeOf(CheckPrimeApp)).call(this, props));
+
+    _this.state = {};
     return _this;
   }
 
-  _createClass(LikeButton, [{
+  _createClass(CheckPrimeApp, [{
+    key: 'handleChange',
+    value: function handleChange(e) {
+      setTimeout(function () {
+        if (e.target.value.length < 12) {
+
+          console.log(e.target.value);
+          if (isPrime(e.target.value) == true) {
+            document.getElementById('blob2').innerHTML = '<h4>' + e.target.value + ' <span class=text-success><strong>is prime!</strong></span></h4>';
+          } else {
+            document.getElementById('blob2').innerHTML = '<h4>' + e.target.value + ' is not prime</h4>';
+          }
+        } else {
+          document.getElementById('blob2').innerHTML = '<h4>too long</h4>';
+        }
+      }, 400);
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
-      if (this.state.liked) {
-        return e('button', {
-          onClick: function onClick() {
-            _this2.setState({ liked: false }), console.log('click me');
-          }
-        }, 'liked');
-      } else {
-        return e('button', {
-          onClick: function onClick() {
-            _this2.setState({ liked: true }), console.log('jsx works');
-          }
-        }, 'click me');
-      }
+      return React.createElement('input', { id: 'primeinput', type: 'number', value: this.state.value, onChange: this.handleChange });
     }
   }]);
 
-  return LikeButton;
+  return CheckPrimeApp;
 }(React.Component);
 
-var domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+ReactDOM.render(React.createElement(CheckPrimeApp, null), document.getElementById('blob'));
 
 // to run JSX listener
 // npm init -y

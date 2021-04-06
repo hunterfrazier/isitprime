@@ -17,3 +17,9 @@
     background-color: rgba(0, 123, 255, .15);
     border: 1px solid rgba(0, 123, 255, .2);
   }
+
+  #primeinput {
+    padding:.1em;
+    font-size:1.25em;
+    background-color:#ddd;
+  }
