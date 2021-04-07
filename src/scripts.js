@@ -4,6 +4,8 @@ const e = React.createElement;
 
 // ES6 isprime function
 // https://stackoverflow.com/questions/40200089/number-prime-test-in-javascript
+//
+// bogging out on large numbers, have to limit input to 7 digits for now (see below)
 
 const isPrime = num => {
   for (let i = 2; i < num; i++)
@@ -26,7 +28,6 @@ function primeFactorsTo(max) {
       }
     }
   }
-  store = null;
   return primes;
 }
 
@@ -71,11 +72,10 @@ class CheckPrimeApp extends React.Component {
 
 
   // TODO: cleanup strings into reusable variables, remove inline html
-  // TODO: need something better here than setTimeout
 
   handleChange(e) {
-    setTimeout(function () {
-      
+
+      if(e.target.value.length < 8) {
         if (isPrime(e.target.value) == true) {
           document.getElementById('primeblob2').innerHTML = '<h4>' + e.target.value + ' <span class=text-success><strong>is prime!</strong></span></h4>';
         } else {
@@ -89,13 +89,14 @@ class CheckPrimeApp extends React.Component {
             }
           }
         }
-
-    }, 1000);
+      } else {
+        document.getElementById('primeblob2').innerHTML = '<h4>value too large</h4>';
+      }
   }
 
   render() {
     return (
-      <input placeholder='enter number' min='0' id='largeprimeinput' type='number' value={this.state.value} onBlur={this.handleChange} />
+      <input placeholder='enter number' min='0' id='largeprimeinput' type='number' value={this.state.value} onChange={this.handleChange} />
     )
   }
 }
