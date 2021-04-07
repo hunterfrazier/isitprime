@@ -23,3 +23,44 @@
     font-size:1.25em;
     background-color:#ddd;
   }
+
+  #largeprimeinput {
+    padding:.1em;
+    font-size:1.25em;
+    background-color:#ccc;
+    width:100%;
+  }
+
+  #logo {
+    color:white;
+    font-size:2em;
+  }
+
+  #logo span {
+    color:lightgreen;
+    font-weight:bold
+  }
+
+  #largeblob2 h4 {
+    word-wrap: break-word;
+  }
+
+  .pcheck p {
+    font-size:1.1em;
+  }
+
+  .pcheck h4 {
+    cursor:pointer
+  }
+
+  .pcheck h1 {
+    font-size:2em;
+  }
+
+  #introblock {
+    font-size:1.25em;
+    font-style:italic;
+    background:#eee;
+    padding:.5em;
+  }
+

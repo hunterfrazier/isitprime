@@ -18,30 +18,43 @@
 
 <body id="super" class="py-4 bg-dark mb-8">
 
-    <div class="container bg-light pb-4">
-
+    <div class="container">
+        <span id="logo">is it <span>prime</span>?</span>
+    </div>
+    <div class="container bg-light pb-4 pcheck">
         <div class="p-4 bg-body mt-2">
 
-
+            <h2 class="mt-4">Prime number check</h2>
             <div class="row mb-3">
                 <div class="col-sm-6">
-                    <div id="blob" class="mx-auto" style="width:240px;max-width:100%"></div>
+                    <div id="largeblob" class="mx-auto" style="width:320px;max-width:100%"></div>
                 </div>
                 <div class="col-sm-6">
-                    <div id="blob2" class="mx-auto" style="width:380px;text-align:center;max-width:100%"><h4>Enter a number to check if Prime!</h4></div>
+                    <div id="largeblob2" class="mx-auto" style="width:380px;text-align:center;max-width:100%"><h4>Enter and <strong>click here</strong></h4></div>
                 </div>
             </div>
 
             <hr/>
+            <h1>What are Prime numbers?</h1>
+            <p>A prime number (or a prime) is a natural number greater than 1 that is not a product of two smaller natural numbers. 
+                A natural number greater than 1 that is not prime is called a composite number.</p>
+            <p>For example, 5 is prime because the only ways of writing it as a product, 1 × 5 or 5 × 1, involve 5 itself. 
+                However, 4 is composite because it is a product (2 × 2) in which both numbers are smaller than 4.</p>
+            <blockquote id="introblock">There are infinitely many primes, as demonstrated by Euclid around 300 BC. No known simple formula separates prime numbers from composite numbers. 
+                However, the distribution of primes within the natural numbers in the large can be statistically modelled. 
+                The first result in that direction is the prime number theorem, proven at the end of the 19th century, 
+                which says that the probability of a randomly chosen number being prime is inversely proportional to 
+                its number of digits, that is, to its logarithm.</blockquote>
+            <hr/>
 
-            <h2 class="mt-1">Prime Numbers Under 100</h2>
+            <h2 class="mt-1">Prime numbers under 100</h2>
             <div class="row mb-3">
                 <div class="col-12 themed-grid-col">
                     <div id="getPrimes100"></div>
                 </div>
             </div>
 
-            <h2 class="mt-4">Prime Numbers Under 1000</h2>
+            <h2 class="mt-4">Prime numbers under 1,000</h2>
             <div class="row mb-3">
                 <div class="col-12 themed-grid-col">
                     <div id="getPrimes1000"></div>
@@ -54,7 +67,7 @@
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingTwo">
                 <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  <h2 class="mt-1">Prime Numbers Under 10,000</h2>
+                  <h2 class="mt-1">Prime numbers under 10,000</h2>
                 </button>
               </h2>
               <div id="collapseTwo" class="accordion-collapse collapse hidden" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -66,7 +79,7 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingThree">
                   <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    <h2 class="mt-1">Prime Numbers Under 100,000</h2>
+                    <h2 class="mt-1">Prime numbers under 100,000</h2>
                   </button>
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse hidden" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
@@ -77,6 +90,7 @@
               </div>
           </div>
 
+          
 
 
         <!-- Load React. -->

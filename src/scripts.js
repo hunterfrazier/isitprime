@@ -28,7 +28,7 @@ function primeFactorsTo(max) {
       }
     }
   }
-  store = [];
+  store = null;
   return primes;
 }
 
@@ -63,38 +63,84 @@ const primeContainer4 = document.getElementById('getPrimes100000');
 ReactDOM.render(e(GetPrimes100000), primeContainer4);
 
 
-class CheckPrimeApp extends React.Component {
+// class CheckPrimeApp extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {};
+//   }
+
+
+//   handleChange(e) {
+//     setTimeout(function () {
+//       if (e.target.value.length < 12) {
+
+//         console.log(e.target.value);
+//         if (isPrime(e.target.value) == true) {
+//           document.getElementById('blob2').innerHTML = '<h4>' + e.target.value + ' <span class=text-success><strong>is prime!</strong></span></h4>';
+//         } else {
+//           if (e.target.value == '') {
+//             document.getElementById('blob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
+//           } else {
+//             if (e.target.value == 1 || e.target.value == 0) {
+//               document.getElementById('blob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
+//             } else {
+//               document.getElementById('blob2').innerHTML = '<h4>' + e.target.value + ' is not prime</h4>';
+//             }
+//           }
+//         }
+//       } else {
+//         document.getElementById('blob2').innerHTML = '<h4>too long</h4>';
+//       }
+
+//     }, 600);
+//   }
+
+//   render() {
+//     return (
+//       <input placeholder='enter number' min='0' id='primeinput' type='number' value={this.state.value} onChange={this.handleChange} />
+//     )
+//   }
+// }
+
+// ReactDOM.render(<CheckPrimeApp />, document.getElementById('blob'));
+
+
+class CheckPrimeLargeApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-  
-  
+
+
   handleChange(e) {
     setTimeout(function () {
-      if (e.target.value.length < 12) {
-        
+      
         console.log(e.target.value);
         if (isPrime(e.target.value) == true) {
-          document.getElementById('blob2').innerHTML = '<h4>' + e.target.value + ' <span class=text-success><strong>is prime!</strong></span></h4>';
+          document.getElementById('largeblob2').innerHTML = '<h4>' + e.target.value + ' <span class=text-success><strong>is prime!</strong></span></h4>';
         } else {
-          document.getElementById('blob2').innerHTML = '<h4>' + e.target.value + ' is not prime</h4>';
+          if (e.target.value == '') {
+            document.getElementById('largeblob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
+          } else {
+            if (e.target.value == 1 || e.target.value == 0) {
+              document.getElementById('largeblob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
+            } else {
+              document.getElementById('largeblob2').innerHTML = '<h4>' + e.target.value + ' is not prime</h4>';
+            }
+          }
         }
-      } else {
-          document.getElementById('blob2').innerHTML = '<h4>too long</h4>';
-      }
 
-    }, 400);
+    }, 1000);
   }
 
   render() {
     return (
-      <input id='primeinput' type='number' value={this.state.value} onChange={this.handleChange} />
+      <input placeholder='enter number' min='0' id='largeprimeinput' type='number' value={this.state.value} onBlur={this.handleChange} />
     )
   }
 }
 
-ReactDOM.render(<CheckPrimeApp />, document.getElementById('blob'));
+ReactDOM.render(<CheckPrimeLargeApp />, document.getElementById('largeblob'));
 
 
 // to run JSX listener
