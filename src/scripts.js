@@ -2,8 +2,6 @@
 
 const e = React.createElement;
 
-
-
 // ES6 isprime function
 // https://stackoverflow.com/questions/40200089/number-prime-test-in-javascript
 
@@ -33,6 +31,7 @@ function primeFactorsTo(max) {
 }
 
 
+// TODO: make a dynamic function for some of this maybe?
 
 function GetPrimes() {
   return primeFactorsTo(100).join(', ');
@@ -50,6 +49,7 @@ function GetPrimes100000() {
   return primeFactorsTo(100000).join(', ');
 }
 
+
 const primeContainer1 = document.getElementById('getPrimes100');
 ReactDOM.render(e(GetPrimes), primeContainer1);
 
@@ -63,69 +63,29 @@ const primeContainer4 = document.getElementById('getPrimes100000');
 ReactDOM.render(e(GetPrimes100000), primeContainer4);
 
 
-// class CheckPrimeApp extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {};
-//   }
-
-
-//   handleChange(e) {
-//     setTimeout(function () {
-//       if (e.target.value.length < 12) {
-
-//         console.log(e.target.value);
-//         if (isPrime(e.target.value) == true) {
-//           document.getElementById('blob2').innerHTML = '<h4>' + e.target.value + ' <span class=text-success><strong>is prime!</strong></span></h4>';
-//         } else {
-//           if (e.target.value == '') {
-//             document.getElementById('blob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
-//           } else {
-//             if (e.target.value == 1 || e.target.value == 0) {
-//               document.getElementById('blob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
-//             } else {
-//               document.getElementById('blob2').innerHTML = '<h4>' + e.target.value + ' is not prime</h4>';
-//             }
-//           }
-//         }
-//       } else {
-//         document.getElementById('blob2').innerHTML = '<h4>too long</h4>';
-//       }
-
-//     }, 600);
-//   }
-
-//   render() {
-//     return (
-//       <input placeholder='enter number' min='0' id='primeinput' type='number' value={this.state.value} onChange={this.handleChange} />
-//     )
-//   }
-// }
-
-// ReactDOM.render(<CheckPrimeApp />, document.getElementById('blob'));
-
-
-class CheckPrimeLargeApp extends React.Component {
+class CheckPrimeApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
 
+  // TODO: cleanup strings into reusable variables, remove inline html
+  // TODO: need something better here than setTimeout
+
   handleChange(e) {
     setTimeout(function () {
       
-        console.log(e.target.value);
         if (isPrime(e.target.value) == true) {
-          document.getElementById('largeblob2').innerHTML = '<h4>' + e.target.value + ' <span class=text-success><strong>is prime!</strong></span></h4>';
+          document.getElementById('primeblob2').innerHTML = '<h4>' + e.target.value + ' <span class=text-success><strong>is prime!</strong></span></h4>';
         } else {
           if (e.target.value == '') {
-            document.getElementById('largeblob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
+            document.getElementById('primeblob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
           } else {
             if (e.target.value == 1 || e.target.value == 0) {
-              document.getElementById('largeblob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
+              document.getElementById('primeblob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
             } else {
-              document.getElementById('largeblob2').innerHTML = '<h4>' + e.target.value + ' is not prime</h4>';
+              document.getElementById('primeblob2').innerHTML = '<h4>' + e.target.value + ' is not prime</h4>';
             }
           }
         }
@@ -140,7 +100,8 @@ class CheckPrimeLargeApp extends React.Component {
   }
 }
 
-ReactDOM.render(<CheckPrimeLargeApp />, document.getElementById('largeblob'));
+const erender = document.getElementById('primeblob');
+ReactDOM.render(e(CheckPrimeApp), erender);
 
 
 // to run JSX listener
