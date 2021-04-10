@@ -75,23 +75,23 @@ class CheckPrimeApp extends React.Component {
 
   handleChange(e) {
 
-      if(e.target.value.length < 8) {
-        if (isPrime(e.target.value) == true) {
-          document.getElementById('primeblob2').innerHTML = '<h4>' + e.target.value + ' <span class=text-success><strong>is prime!</strong></span></h4>';
+    if (e.target.value.length < 8) {
+      if (isPrime(e.target.value) == true) {
+        document.getElementById('primeblob2').innerHTML = '<h4>' + e.target.value + ' <span class=text-success><strong>is prime!</strong></span></h4>';
+      } else {
+        if (e.target.value == '') {
+          document.getElementById('primeblob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
         } else {
-          if (e.target.value == '') {
+          if (e.target.value == 1 || e.target.value == 0) {
             document.getElementById('primeblob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
           } else {
-            if (e.target.value == 1 || e.target.value == 0) {
-              document.getElementById('primeblob2').innerHTML = '<h4>Enter number to check if Prime!</h4>';
-            } else {
-              document.getElementById('primeblob2').innerHTML = '<h4>' + e.target.value + ' is not prime</h4>';
-            }
+            document.getElementById('primeblob2').innerHTML = '<h4>' + e.target.value + ' is not prime</h4>';
           }
         }
-      } else {
-        document.getElementById('primeblob2').innerHTML = '<h4>value too large</h4>';
       }
+    } else {
+      document.getElementById('primeblob2').innerHTML = '<h4>value too large</h4>';
+    }
   }
 
   render() {
@@ -100,6 +100,42 @@ class CheckPrimeApp extends React.Component {
     )
   }
 }
+
+const isMomHappy = true;
+
+// Promise
+const willIGetNewPhone = new Promise(
+  (resolve, reject) => { // fat arrow
+    if (isMomHappy) {
+      const phone = {
+        brand: 'Samsung',
+        color: 'black'
+      };
+      resolve(phone);
+    } else {
+      const reason = new Error('mom is not happy');
+      reject(reason);
+    }
+
+  }
+);
+
+// 2nd promise
+const showOff = function (phone) {
+  const message = 'Hey friend, I have a new ' +
+    phone.color + ' ' + phone.brand + ' phone';
+  return Promise.resolve(message);
+};
+
+// call our promise
+const askMom = function () {
+  willIGetNewPhone
+    .then(showOff)
+    .then(fulfilled => console.log(fulfilled)) // fat arrow
+    .catch(error => console.log(error.message)); // fat arrow
+};
+
+askMom();
 
 const erender = document.getElementById('primeblob');
 ReactDOM.render(e(CheckPrimeApp), erender);

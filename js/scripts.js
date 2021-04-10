@@ -116,6 +116,41 @@ var CheckPrimeApp = function (_React$Component) {
   return CheckPrimeApp;
 }(React.Component);
 
+var isMomHappy = true;
+
+// Promise
+var willIGetNewPhone = new Promise(function (resolve, reject) {
+  // fat arrow
+  if (isMomHappy) {
+    var phone = {
+      brand: 'Samsung',
+      color: 'black'
+    };
+    resolve(phone);
+  } else {
+    var reason = new Error('mom is not happy');
+    reject(reason);
+  }
+});
+
+// 2nd promise
+var showOff = function showOff(phone) {
+  var message = 'Hey friend, I have a new ' + phone.color + ' ' + phone.brand + ' phone';
+  return Promise.resolve(message);
+};
+
+// call our promise
+var askMom = function askMom() {
+  willIGetNewPhone.then(showOff).then(function (fulfilled) {
+    return console.log(fulfilled);
+  }) // fat arrow
+  .catch(function (error) {
+    return console.log(error.message);
+  }); // fat arrow
+};
+
+askMom();
+
 var erender = document.getElementById('primeblob');
 ReactDOM.render(e(CheckPrimeApp), erender);
 
