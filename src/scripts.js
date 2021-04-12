@@ -32,44 +32,27 @@ function primeFactorsTo(max) {
 }
 
 
-// TODO: make a dynamic function for some of this maybe?
-
-function GetPrimes() {
-  return primeFactorsTo(100).join(', ');
+function getPrimes(nums=0) {
+  return primeFactorsTo(nums).join(', ');
 }
 
-function GetPrimes1000() {
-  return primeFactorsTo(1000).join(', ');
+function getPrimeContainer(id) {
+  return document.getElementById('getPrimes'+id);
 }
-
-function GetPrimes10000() {
-  return primeFactorsTo(10000).join(', ');
-}
-
-function GetPrimes100000() {
-  return primeFactorsTo(100000).join(', ');
-}
-
-
-const primeContainer1 = document.getElementById('getPrimes100');
-ReactDOM.render(e(GetPrimes), primeContainer1);
-
-const primeContainer2 = document.getElementById('getPrimes1000');
-ReactDOM.render(e(GetPrimes1000), primeContainer2);
-
-const primeContainer3 = document.getElementById('getPrimes10000');
-ReactDOM.render(e(GetPrimes10000), primeContainer3);
-
-const primeContainer4 = document.getElementById('getPrimes100000');
-ReactDOM.render(e(GetPrimes100000), primeContainer4);
-
+// self invoking iterate through ID's and render React
+(function setReacts(id) {
+  let idlist = [100,1000,10000,100000];
+  for (let xx of idlist) {
+    ReactDOM.render(getPrimes(xx), getPrimeContainer(xx));
+    
+  }
+})();
 
 class CheckPrimeApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-
 
   // TODO: cleanup strings into reusable variables, remove inline html
 
@@ -101,44 +84,11 @@ class CheckPrimeApp extends React.Component {
   }
 }
 
-const isMomHappy = true;
-
-// Promise
-const willIGetNewPhone = new Promise(
-  (resolve, reject) => { // fat arrow
-    if (isMomHappy) {
-      const phone = {
-        brand: 'Samsung',
-        color: 'black'
-      };
-      resolve(phone);
-    } else {
-      const reason = new Error('mom is not happy');
-      reject(reason);
-    }
-
-  }
-);
-
-// 2nd promise
-const showOff = function (phone) {
-  const message = 'Hey friend, I have a new ' +
-    phone.color + ' ' + phone.brand + ' phone';
-  return Promise.resolve(message);
-};
-
-// call our promise
-const askMom = function () {
-  willIGetNewPhone
-    .then(showOff)
-    .then(fulfilled => console.log(fulfilled)) // fat arrow
-    .catch(error => console.log(error.message)); // fat arrow
-};
-
-askMom();
 
 const erender = document.getElementById('primeblob');
 ReactDOM.render(e(CheckPrimeApp), erender);
+
+
 
 
 // to run JSX listener

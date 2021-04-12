@@ -40,35 +40,43 @@ function primeFactorsTo(max) {
   return primes;
 }
 
-// TODO: make a dynamic function for some of this maybe?
+function getPrimes() {
+  var nums = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-function GetPrimes() {
-  return primeFactorsTo(100).join(', ');
+  return primeFactorsTo(nums).join(', ');
 }
 
-function GetPrimes1000() {
-  return primeFactorsTo(1000).join(', ');
+function getPrimeContainer(id) {
+  return document.getElementById('getPrimes' + id);
 }
+// self invoking iterate through ID's and render React
+(function setReacts(id) {
+  var idlist = [100, 1000, 10000, 100000];
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
-function GetPrimes10000() {
-  return primeFactorsTo(10000).join(', ');
-}
+  try {
+    for (var _iterator = idlist[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var xx = _step.value;
 
-function GetPrimes100000() {
-  return primeFactorsTo(100000).join(', ');
-}
-
-var primeContainer1 = document.getElementById('getPrimes100');
-ReactDOM.render(e(GetPrimes), primeContainer1);
-
-var primeContainer2 = document.getElementById('getPrimes1000');
-ReactDOM.render(e(GetPrimes1000), primeContainer2);
-
-var primeContainer3 = document.getElementById('getPrimes10000');
-ReactDOM.render(e(GetPrimes10000), primeContainer3);
-
-var primeContainer4 = document.getElementById('getPrimes100000');
-ReactDOM.render(e(GetPrimes100000), primeContainer4);
+      ReactDOM.render(getPrimes(xx), getPrimeContainer(xx));
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+})();
 
 var CheckPrimeApp = function (_React$Component) {
   _inherits(CheckPrimeApp, _React$Component);
@@ -115,41 +123,6 @@ var CheckPrimeApp = function (_React$Component) {
 
   return CheckPrimeApp;
 }(React.Component);
-
-var isMomHappy = true;
-
-// Promise
-var willIGetNewPhone = new Promise(function (resolve, reject) {
-  // fat arrow
-  if (isMomHappy) {
-    var phone = {
-      brand: 'Samsung',
-      color: 'black'
-    };
-    resolve(phone);
-  } else {
-    var reason = new Error('mom is not happy');
-    reject(reason);
-  }
-});
-
-// 2nd promise
-var showOff = function showOff(phone) {
-  var message = 'Hey friend, I have a new ' + phone.color + ' ' + phone.brand + ' phone';
-  return Promise.resolve(message);
-};
-
-// call our promise
-var askMom = function askMom() {
-  willIGetNewPhone.then(showOff).then(function (fulfilled) {
-    return console.log(fulfilled);
-  }) // fat arrow
-  .catch(function (error) {
-    return console.log(error.message);
-  }); // fat arrow
-};
-
-askMom();
 
 var erender = document.getElementById('primeblob');
 ReactDOM.render(e(CheckPrimeApp), erender);
